@@ -3,6 +3,7 @@ require("jonesy")
 
 local t1 = {1,2,3}
 local t2 = {}
+local t3 = {4,5,6}
 
 function inc(x) 
    return x + 1 
@@ -168,9 +169,23 @@ describe("map", function()
    end)
 end)
 
-
 describe("compose", function()
    it("Should compose two functions", function()
       assert.are.equal(jonesy.compose(sq, inc)(2), sq(inc(2)))
+   end)
+end)
+
+describe("array_append", function()
+   it("Should be the identity on a single table", function()
+      assert.are.same(jonesy.array_append(t1), t1)
+   end)
+
+   it("Should join two tables", function()
+      assert.are.same(jonesy.array_append(t1, t3), {1,2,3,4,5,6})
+   end)
+
+   it("Should join multiple tables", function()
+      assert.are.same(jonesy.array_append(t1,t3,t1,t2),
+                      {1,2,3,4,5,6,1,2,3})
    end)
 end)

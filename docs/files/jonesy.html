@@ -84,6 +84,11 @@
 <table class="function_list">
 
 	<tr>
+	<td class="name" nowrap><a href="#array_append">array_append</a>&nbsp;(...)</td>
+	<td class="summary">Append array-tables onto a table Combine multiple tables into a single table.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#compose">compose</a>&nbsp;(f, g)</td>
 	<td class="summary">Compose two functions compose(f,g) is f(g(...)) </td>
 	</tr>
@@ -163,6 +168,35 @@
 
 <h2><a name="functions"></a>Functions</h2>
 <dl class="function">
+
+
+
+<dt><a name="array_append"></a><strong>array_append</strong>&nbsp;(...)</dt>
+<dd>
+Append array-tables onto a table Combine multiple tables into a single table.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: tables to be appended
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+a new table containing all the elements from the provided tables
+
+
+
+</dd>
+
 
 
 
@@ -544,7 +578,7 @@ a table consisting of the tail of every subtable
 
 <dt><a name="transpose_tables"></a><strong>transpose_tables</strong>&nbsp;(...)</dt>
 <dd>
-Segments a collection of tables into column-grouped tables. Given tables *t1*, *t2*, ..., *tn* return *{{t1[1], t2[1], ..., tn[1]}, {t1[2], t2[2], ..., tn[2]}, ... {t1[n], t2[n], ..., tn[n]}}*
+Segments a collection of tables into column-grouped tables. Given tables t1, t2, ..., tn return {{t1[1], t2[1], ..., tn[1]}, {t1[2], t2[2], ..., tn[2]}, ... {t1[n], t2[n], ..., tn[n]}}
 
 
 <h3>Parameters</h3>

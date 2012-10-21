@@ -227,3 +227,25 @@ end
 function compose(f,g)
    return function(...) return f(g(...)) end
 end
+
+
+--- Append array-tables onto a table
+-- Combine multiple tables into a single table.
+-- @param ... tables to be appended
+-- @return a new table containing all the elements from the provided tables
+function array_append(...)
+   local new_t = {}
+
+   for i = 1, arg.n do
+      local curr_t = arg[i]
+      if (type(curr_t) ~= "table") then
+         error("array_append requires tables for each argument")
+      end
+      for j = 1, #curr_t do
+         new_t[#new_t+1] = curr_t[j]
+      end
+   end
+
+   return new_t
+end
+
