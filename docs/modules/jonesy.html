@@ -84,6 +84,11 @@
 <table class="function_list">
 
 	<tr>
+	<td class="name" nowrap><a href="#add">add</a>&nbsp;(...)</td>
+	<td class="summary">Add a variable amount of numbers.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#array_append">array_append</a>&nbsp;(...)</td>
 	<td class="summary">Append array-tables onto a table Combine multiple tables into a single table.</td>
 	</tr>
@@ -91,6 +96,11 @@
 	<tr>
 	<td class="name" nowrap><a href="#compose">compose</a>&nbsp;(f, g)</td>
 	<td class="summary">Compose two functions compose(f,g) is f(g(...)) </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#div">div</a>&nbsp;(...)</td>
+	<td class="summary">Divide a variable amount of numbers.</td>
 	</tr>
 
 	<tr>
@@ -134,8 +144,18 @@
 	</tr>
 
 	<tr>
+	<td class="name" nowrap><a href="#mul">mul</a>&nbsp;(...)</td>
+	<td class="summary">Multiple a variable amount of numbers.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#replicate">replicate</a>&nbsp;(count, value)</td>
 	<td class="summary">Replicate a value count times.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#sub">sub</a>&nbsp;(...)</td>
+	<td class="summary">Subtract a variable amount of numbers.</td>
 	</tr>
 
 	<tr>
@@ -167,6 +187,35 @@
 
 <h2><a name="functions"></a>Functions</h2>
 <dl class="function">
+
+
+
+<dt><a name="add"></a><strong>add</strong>&nbsp;(...)</dt>
+<dd>
+Add a variable amount of numbers. Sum all supplied numbers.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: numbers to add together
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+the sum of all the numbers
+
+
+
+</dd>
+
 
 
 
@@ -224,6 +273,35 @@ Compose two functions compose(f,g) is f(g(...))
 
 <h3>Return value:</h3>
 the composition of both functions
+
+
+
+</dd>
+
+
+
+
+<dt><a name="div"></a><strong>div</strong>&nbsp;(...)</dt>
+<dd>
+Divide a variable amount of numbers. Divide all supplied numbers
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: numbers to be divded
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+the result of dividing all the numbers
 
 
 
@@ -484,6 +562,35 @@ a new table from the resulting mapping
 
 
 
+<dt><a name="mul"></a><strong>mul</strong>&nbsp;(...)</dt>
+<dd>
+Multiple a variable amount of numbers. Multiply all supplied numbers.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: numbers to be multiplied
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+the product of all the numbers
+
+
+
+</dd>
+
+
+
+
 <dt><a name="replicate"></a><strong>replicate</strong>&nbsp;(count, value)</dt>
 <dd>
 Replicate a value count times. Return a table consisting of count-many instances of value.
@@ -509,6 +616,35 @@ Replicate a value count times. Return a table consisting of count-many instances
 
 <h3>Return value:</h3>
 a table consiting of count-many instances of value
+
+
+
+</dd>
+
+
+
+
+<dt><a name="sub"></a><strong>sub</strong>&nbsp;(...)</dt>
+<dd>
+Subtract a variable amount of numbers. Subtract all supplied numbers.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: numbers to be subtracted
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+the difference of all the numbers
 
 
 

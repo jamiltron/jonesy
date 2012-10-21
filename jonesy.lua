@@ -7,7 +7,7 @@ require 'table'
 
 local function non_empty(t, name)
    if (type(t) ~= "table" or empty(t)) then
-      error(name.." requires a non-empty table")
+      error(name..":  requires a non-empty table")
    end
 end
 
@@ -27,7 +27,7 @@ function transpose_tables(...)
       
       for j,t in ipairs(arg) do
          if (type(t) ~= "table") then
-            error("each argument to transpose_tables must be a table")
+            error("transpose_tables: each argument must be a table")
          end
          
          if t[i] == nil then
@@ -77,7 +77,7 @@ end
 -- successive element of t
 function foldl(f, init, t)
    if(type(col) ~= "table") then
-      error("foldl requires a function, initial value, and table")
+      error("foldl: requires a function, initial value, and table")
    end
    
    for i,v in ipairs(t) do
@@ -236,16 +236,75 @@ end
 function array_append(...)
    local new_t = {}
 
-   for i = 1, arg.n do
+   for i=1, arg.n do
       local curr_t = arg[i]
       if (type(curr_t) ~= "table") then
          error("array_append requires tables for each argument")
       end
-      for j = 1, #curr_t do
+      for j=1, #curr_t do
          new_t[#new_t+1] = curr_t[j]
       end
    end
 
    return new_t
+end
+
+--- Add a variable amount of numbers.
+-- Sum all supplied numbers.
+-- @param ... numbers to add together
+-- @return the sum of all the numbers
+function add(...)
+   local sum = arg[1]
+
+   for i=2, arg.n do
+      sum = sum + arg[i]
+   end
+
+   return sum
+end
+
+--- Multiple a variable amount of numbers.
+-- Multiply all supplied numbers.
+-- @param ... numbers to be multiplied
+-- @return the product of all the numbers
+function mul(...)
+   local prod = arg[1]
+
+   for i=2, arg.n do
+      prod = prod * arg[i]
+   end
+
+   return prod
+end
+
+--- Subtract a variable amount of numbers.
+-- Subtract all supplied numbers.
+-- @param ... numbers to be subtracted
+-- @return the difference of all the numbers
+function sub(...)
+   local diff = arg[1]
+
+   for i=2, arg.n do
+      diff = diff - arg[i]
+   end
+
+   return diff
+end
+
+--- Divide a variable amount of numbers.
+-- Divide all supplied numbers
+-- @param ... numbers to be divded
+-- @return the result of dividing all the numbers
+function div(...)
+   local quo = arg[1]
+
+   for i=2, arg.n do
+      if arg[i] == 0 then
+         error("div: divide by zero error")
+      end
+      quo = quo / arg[i]
+   end
+
+   return quo
 end
 

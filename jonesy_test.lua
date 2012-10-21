@@ -189,3 +189,65 @@ describe("array_append", function()
                       {1,2,3,4,5,6,1,2,3})
    end)
 end)
+
+describe("add", function()
+   it("Should be identity for 1 number", function()
+      assert.are.equal(jonesy.add(1), 1)
+   end)
+
+   it("Should be identity for a number and 0", function()
+      assert.are.equal(jonesy.add(1,0), 1)
+   end)
+
+   it("Should add multiple numbers together", function()
+      assert.are.equal(jonesy.add(1,2,3), 6)
+   end)
+end)
+
+describe("div", function()
+   it("Should be identity for 1 number", function()
+      assert.are.equal(jonesy.div(1), 1)
+   end)
+
+   it("Should be identity for a number and 1", function()
+      assert.are.equal(jonesy.div(42,1), 42)
+   end)
+
+   it("Should add multiple numbers together", function()
+      assert.are.equal(jonesy.div(12,2,3), 2)
+   end)
+
+   it("Should not allow 0 to be anything other than the first argument", function()
+         assert.has.errors(function() jonesy.div(1,0) end)
+         assert.are.equal(jonesy.div(0,1), 0)
+   end)
+end)
+
+
+describe("sub", function()
+   it("Should be identity for 1 number", function()
+      assert.are.equal(jonesy.sub(1), 1)
+   end)
+
+   it("Should be identity for a number and 0", function()
+      assert.are.equal(jonesy.sub(1,0), 1)
+   end)
+
+   it("Should sub multiple numbers together", function()
+      assert.are.equal(jonesy.sub(1,2,3), -4)
+   end)
+end)
+
+describe("mul", function()
+   it("Should be identity for 1 number", function()
+      assert.are.equal(jonesy.mul(1), 1)
+   end)
+
+   it("Should be identity for a number and 1", function()
+      assert.are.equal(jonesy.mul(42,1), 42)
+   end)
+
+   it("Should add multiple numbers together", function()
+      assert.are.equal(jonesy.mul(1,2,3), 6)
+   end)
+end)
