@@ -308,3 +308,24 @@ function div(...)
    return quo
 end
 
+--- Intersperses and element into a table.
+-- Given an element and a table, intersperse that element into the
+-- table.
+-- @param e element to be interspersed
+-- @param t the table to be used
+-- @return a new table with e interspersed into t
+function intersperse(e, t)
+   if type(t) ~= "table" then
+      error("intersperse: second argument must be a table")
+   end
+
+   local new_t = {}
+
+   for i=1, #t-1 do
+      new_t[#new_t+1] = t[i]
+      new_t[#new_t+1] = e
+   end
+
+   new_t[#new_t+1] = t[#t]
+   return new_t
+end

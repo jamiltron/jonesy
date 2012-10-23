@@ -251,3 +251,17 @@ describe("mul", function()
       assert.are.equal(jonesy.mul(1,2,3), 6)
    end)
 end)
+
+describe("intersperse", function()
+   it("Should intersperse elements into a table", function()
+      assert.are.same(jonesy.intersperse(42, t1), {1,42,2,42,3})
+   end)
+
+   it("Should return an empty table if provided one", function()
+      assert.are.same(jonesy.intersperse(42, t2), t2)
+   end)
+
+   it("Should error if provided anything but a table in the second argument", function()
+      assert.has.errors(function() jonesy.intersperse(42,42) end)
+   end)
+end)
