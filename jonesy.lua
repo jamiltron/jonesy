@@ -18,22 +18,23 @@ end
 -- @param ... tables
 -- @return transpose of all tables as if each were a row in a matrix
 function transpose_tables(...)
+   local arg = {...}
    local arr = {}
    local i = 1
-   
+
    while true do
       local col = {}
       local add = true
-      
+
       for j,t in ipairs(arg) do
          if (type(t) ~= "table") then
-            error("transpose_tables: each argument must be a table")
+            error("transpose_tables: each argument must be a table - "..type(t)..", "..t.." "..j)
          end
-         
+
          if t[i] == nil then
             add = false
             break
-         else 
+         else
             col[#col + 1] = t[i]
          end
       end
@@ -58,6 +59,7 @@ end
 -- @param ... any number of tables to be mapped over
 -- @return a new table from the resulting mapping
 function map(f, ...)
+   local arg = {...}
    local new_arr = {}
    local col = transpose_tables(...)
 
@@ -76,10 +78,10 @@ end
 -- @return the final fold of f over the initial value and each
 -- successive element of t
 function foldl(f, init, t)
-   if(type(col) ~= "table") then
+   if(type(t) ~= "table") then
       error("foldl: requires a function, initial value, and table")
    end
-   
+
    for i,v in ipairs(t) do
       init = f(init,v)
    end
@@ -96,7 +98,7 @@ end
 -- @return the final fold of f over the initial value and each
 -- successive element of t
 function foldr(f, init, t)
-   assert(type(col) == "table")
+   assert(type(t) == "table")
 
    for i=#col, 1, -1 do
       init = f(init, t[i])
@@ -135,7 +137,7 @@ end
 -- @return first element of t
 function head(t)
    non_empty(t, "head")
-   
+
    return t[1]
 end
 
@@ -145,7 +147,7 @@ end
 -- @return last element of t
 function last(t)
    non_empty(t, "last")
-   
+
    return t[#t]
 end
 
@@ -234,9 +236,10 @@ end
 -- @param ... tables to be appended
 -- @return a new table containing all the elements from the provided tables
 function array_append(...)
+   local arg = {...}
    local new_t = {}
 
-   for i=1, arg.n do
+   for i=1, #arg do
       local curr_t = arg[i]
       if (type(curr_t) ~= "table") then
          error("array_append requires tables for each argument")
@@ -254,9 +257,10 @@ end
 -- @param ... numbers to add together
 -- @return the sum of all the numbers
 function add(...)
+   local arg = {...}
    local sum = arg[1]
 
-   for i=2, arg.n do
+   for i=2, #arg do
       sum = sum + arg[i]
    end
 
@@ -268,9 +272,10 @@ end
 -- @param ... numbers to be multiplied
 -- @return the product of all the numbers
 function mul(...)
+   local arg = {...}
    local prod = arg[1]
 
-   for i=2, arg.n do
+   for i=2, #arg do
       prod = prod * arg[i]
    end
 
@@ -282,9 +287,10 @@ end
 -- @param ... numbers to be subtracted
 -- @return the difference of all the numbers
 function sub(...)
+   local arg = {...}
    local diff = arg[1]
 
-   for i=2, arg.n do
+   for i=2, #arg do
       diff = diff - arg[i]
    end
 
@@ -296,9 +302,10 @@ end
 -- @param ... numbers to be divded
 -- @return the result of dividing all the numbers
 function div(...)
+   local arg = {...}
    local quo = arg[1]
 
-   for i=2, arg.n do
+   for i=2, #arg do
       if arg[i] == 0 then
          error("div: divide by zero error")
       end
